@@ -6,14 +6,11 @@ import SwiftUI
 /// This also captures the full UIWindow and applies an ugly workaround to be able to render sheets.
 class AppWindowScreen<T: View> {
     let controller: UIHostingController<T>
-    let dispose: (() -> Void)?
+    var dispose: (() -> Void)?
     let view: () -> T
     let window = UIApplication.shared.keyWindow!
 
-    init(@ViewBuilder view: @escaping () -> T, height: Int? = nil) {
-        // this is necessary to disable animations for sheets
-        UIView.setAnimationsEnabled(false)
-        
+    init(@ViewBuilder view: @escaping () -> T, height: Int? = nil) {        
         self.view = view
         self.controller = UIHostingController(rootView: view())
 
@@ -29,18 +26,19 @@ class AppWindowScreen<T: View> {
 
     func update() {
         self.controller.rootView = view()
-        self.window.setNeedsDisplay()
-        #warning("Is there a better way to do the main-thread-hop to get the sheet on-screen?")
-        RunLoop.main.run(until: Date.now.addingTimeInterval(0.1))
+        //self.window.setNeedsDisplay()
+        //#warning("Is there a better way to do the main-thread-hop to get the sheet on-screen?")
+        //RunLoop.main.run(until: Date.now.addingTimeInterval(0.1))
     }
 
-    @discardableResult func renderImage() -> UIImage {
-        self.update()
-        return self.window.asImage(drawHierarchy: true)
+    @discardableResult func renderImage(size: CGSize? = nil) -> UIImage {
+        //self.update()
+        return self.window.asImage(size: size, drawHierarchy: true)
     }
 
     func tearDown() {
         dispose?()
+        dispose = nil
     }
 
     deinit {

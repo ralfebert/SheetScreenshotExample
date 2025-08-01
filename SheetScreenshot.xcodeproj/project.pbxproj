@@ -23,6 +23,7 @@
 /* Begin PBXFileReference section */
 		BF6AFA632E3B5FE300EE2C13 /* SheetScreenshot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SheetScreenshot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF6AFA752E3B641D00EE2C13 /* SheetScreenshotTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SheetScreenshotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF878D222E3CBD78008E3E3E /* SheetScreenshot.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = SheetScreenshot.xctestplan; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -60,6 +61,7 @@
 		BF6AFA5A2E3B5FE300EE2C13 = {
 			isa = PBXGroup;
 			children = (
+				BF878D222E3CBD78008E3E3E /* SheetScreenshot.xctestplan */,
 				BF6AFA652E3B5FE300EE2C13 /* SheetScreenshot */,
 				BF6AFA762E3B641D00EE2C13 /* SheetScreenshotTests */,
 				BF6AFA7F2E3B644400EE2C13 /* Frameworks */,
