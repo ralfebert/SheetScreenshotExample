@@ -26,9 +26,10 @@ class AppWindowScreen<T: View> {
 
     func update() {
         self.controller.rootView = view()
-        //self.window.setNeedsDisplay()
-        //#warning("Is there a better way to do the main-thread-hop to get the sheet on-screen?")
-        //RunLoop.main.run(until: Date.now.addingTimeInterval(0.1))
+        self.window.setNeedsLayout()
+        self.window.layoutIfNeeded()
+        self.window.setNeedsDisplay()
+        CATransaction.flush()
     }
 
     @discardableResult func renderImage(size: CGSize? = nil) -> UIImage {
